@@ -9,15 +9,13 @@ const path = require('path');
 // =====================================================================================
 
 
-// // Setting up mongoDB / mongoose
-// const mongoose = require('mongoose');
-// const dbURL = process.env.DB_URI;
+// Setting up mongoDB / mongoose
+const mongoose = require('mongoose');
 
-
-// // Connecting to mongoDB
-// mongoose.connect(dbURL, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => console.log('MongoDB Connected'))
-//   .catch(err => process.exit());
+// Connecting to mongoDB
+mongoose.connect( process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => process.exit());
 
 
 // =====================================================================================
@@ -41,10 +39,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Importing routes
 const publicRoutes = require('./routes/public-routes');
+const authRoutes = require('./routes/auth-routes');
+const adminRoutes = require('./routes/admin-routes');
 
 
 // Setting up routes
 app.use('/public', publicRoutes);
+app.use('/auth', authRoutes);
+app.use('/admin', adminRoutes);
 
 
 // Home route
@@ -56,6 +58,7 @@ app.get('/', (req, res) => {
 // =====================================================================================
 
 
-app.listen(7000, () => {
-  console.log("Server is running on port 8080");
+// Setting up port
+app.listen(process.env.PORT, () => {
+  console.log("Server is running on port 7000");
 });

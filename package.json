@@ -1,5 +1,28 @@
 {
+  "name": "flight-booking-app-backend",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon -r dotenv/config app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prashantkumardagur/flight-booking-app-backend.git"
+  },
+  "keywords": [
+    "Flight-app"
+  ],
+  "author": "Prashant Kumar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prashantkumardagur/flight-booking-app-backend/issues"
+  },
+  "homepage": "https://github.com/prashantkumardagur/flight-booking-app-backend#readme",
+  "description": "",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
