@@ -1,5 +1,6 @@
 const Flight = require('../models/flight');
 const Airport = require('../models/airport');
+const Booking = require('../models/booking');
 
 const { respondError, respondSuccess } = require('./utils/responders');
 
@@ -49,11 +50,22 @@ module.exports.airportSearch = async (req, res) => {
 
 
 module.exports.findFlights = async (req, res) => {
-  const { from, to } = req.body;
+  let { from, to } = req.body;
 
   try{
     const flights = await Flight.find({from, to}).populate(['from', 'to']);
-    respondSuccess(res, "Flights fetched successfully", flights);
+    // const bookings = await Booking.find({date});
+
+    // Add seats left to each flight
+    // flights.forEach(flight => {
+    //   bookings.forEach(booking => {
+    //     if(booking.flight === flight._id) {
+    //       flight.seats -= booking.seats;
+    //     }
+    //   });
+    // });
+
+    respondSuccess(res, "Flights fetched successfully", flights );
   
   } catch(err) {
     respondError(res, 'Error getting flights', 500);

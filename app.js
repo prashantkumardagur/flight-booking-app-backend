@@ -41,12 +41,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 const publicRoutes = require('./routes/public-routes');
 const authRoutes = require('./routes/auth-routes');
 const adminRoutes = require('./routes/admin-routes');
+const userRoutes = require('./routes/user-routes');
 
 
 // Setting up routes
 app.use('/public', publicRoutes);
 app.use('/auth', authRoutes);
 app.use('/admin', adminRoutes);
+app.use('/user', userRoutes);
 
 
 // Home route
